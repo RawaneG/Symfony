@@ -21,6 +21,9 @@ class AnneeScolaire
     #[ORM\OneToMany(mappedBy: 'anneeScolaire', targetEntity: Inscription::class)]
     private $inscriptions;
 
+    #[ORM\Column(type: 'boolean')]
+    private $etat;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
@@ -69,6 +72,18 @@ class AnneeScolaire
                 $inscription->setAnneeScolaire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isEtat(): ?bool
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(bool $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

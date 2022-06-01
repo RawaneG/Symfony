@@ -9,15 +9,8 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $etudiant = new Etudiant();
-        $etudiant   ->setNomComplet('Rawane Meissa Sow')
-                    ->setRole('ROLE_ETUDIANT')
-                    ->setLogin('rawane.meissa@gmail.com')
-                    ->setMdp('rawane10')
-                    ->setMatricule('ETU_2022')
-                    ->setAdresse('Sacré Coeur')
-                    ->setSexe('Masculin');
-        $manager->persist($etudiant);
-        $manager->flush();
+        // $product = new Product ();
+        // $manager->persist($product);
+        // $manager->flush();
     }
 }

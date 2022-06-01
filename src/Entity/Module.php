@@ -16,9 +16,6 @@ class Module
     private $id;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $nomModule;
-
-    #[ORM\Column(type: 'string', length: 50)]
     private $libelleModule;
 
     #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'modules')]
@@ -32,18 +29,6 @@ class Module
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNomModule(): ?string
-    {
-        return $this->nomModule;
-    }
-
-    public function setNomModule(string $nomModule): self
-    {
-        $this->nomModule = $nomModule;
-
-        return $this;
     }
 
     public function getLibelleModule(): ?string

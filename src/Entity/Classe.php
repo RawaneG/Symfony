@@ -18,12 +18,6 @@ class Classe
     #[ORM\Column(type: 'string', length: 50)]
     private $libelle;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    private $filiere;
-
-    #[ORM\Column(type: 'string', length: 50)]
-    private $niveau;
-
     #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'classes')]
     private $professeurs;
 

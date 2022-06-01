@@ -19,9 +19,6 @@ class Personne
     #[ORM\Column(type: 'string', length: 100)]
     protected $nomComplet;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    protected $role;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -39,15 +36,4 @@ class Personne
         return $this;
     }
 
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
 }
