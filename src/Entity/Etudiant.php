@@ -30,6 +30,7 @@ class Etudiant extends User
     {
         $this->demandes = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
+        $this->setRoles(['ROLE_ETUDIANT']);
     }
 
     public function getId(): ?int

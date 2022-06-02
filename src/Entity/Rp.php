@@ -24,6 +24,7 @@ class Rp extends User
         $this->professeurs = new ArrayCollection();
         $this->classes = new ArrayCollection();
         $this->demandes = new ArrayCollection();
+        $this->setRoles(['ROLE_RP']);
     }
 
     public function getId(): ?int

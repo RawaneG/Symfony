@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Classes{% endblock %}
+
+{% block body %}
+<h3 class="d-flex justify-content-center">
+    Liste des Classes
+</h3>
+<table class="table table-striped table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">Libellé Classe</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for classe in classes %}
+    <tr>
+      <td>
+        {{
+            classe.libelle
+        }}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

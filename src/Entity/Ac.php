@@ -16,6 +16,7 @@ class Ac extends User
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
+        $this->setRoles(['ROLE_AC']);
     }
 
     public function getId(): ?int

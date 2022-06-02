@@ -10,6 +10,7 @@
   <thead>
     <tr>
       <th scope="col">Nom Complet</th>
+      <th scope="col">Email</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +21,16 @@
             p.nomComplet
         }}
       </td>
+      <td>
+        {{
+            p.email
+        }}
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+<div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(rp)}}
+</div>
 {% endblock %}
