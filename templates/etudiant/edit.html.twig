@@ -1,0 +1,9 @@
+<title>{% block title %}Modifier un Étudiant{% endblock %}</title>
+
+{% block body %}
+
+{{
+    include('etudiant/form.html.twig', {form:form,button:'Modifier'})
+}}
+
+{% endblock %}

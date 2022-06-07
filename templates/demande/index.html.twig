@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des RP{% endblock %}
+{% block title %}Liste des Demandes{% endblock %}
 
 {% block body %}
 
 <h3 class="d-flex justify-content-center">
-    Liste des RP
+    Liste des Demandes
 </h3>
 <table class="table table-striped table-hover text-center">
   <thead>
     <tr>
-      <th scope="col">Nom Complet</th>
-      <th scope="col">Email</th>
+      <th scope="col">Motif</th>
+      <th scope="col">Date</th>
     </tr>
   </thead>
   <tbody>
-    {% for p in rp %}
+    {% for demande in demandes %}
     <tr>
       <td>
         {{
-            p.nomComplet
+            demande.motif
         }}
       </td>
       <td>
         {{
-            p.email
+            demande.date
         }}
       </td>
     </tr>
@@ -32,6 +32,6 @@
   </tbody>
 </table>
 <div class="pagination d-flex justify-content-center">
-    {{ knp_pagination_render(rp)}}
+    {{ knp_pagination_render(demandes)}}
 </div>
 {% endblock %}

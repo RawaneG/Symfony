@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Étudiants{% endblock %}
+
+{% block body %}
+{{
+    include('navbar.html.twig')
+}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 mt-4 d-flex justify-content-around">
+    <h2>Liste des Étudiants</h2>
+    <a href="{{ path('app_etudiant.add') }}" class="btn btn-outline-success">
+        Ajouter un étudiant
+    </a>
+</nav>
+<table class="table table-striped table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom Complet</th>
+      <th scope="col">Email</th>
+      <th scope="col">Matricule</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Sexe</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for etudiant in etudiants %}
+    <tr>
+    <td>
+    {% set i = i + 1 %}
+    {{
+        i
+    }}
+    </td>
+    <td>
+        {{
+            etudiant.nomComplet
+        }}
+    </td>
+    <td>
+        {{
+            etudiant.email
+        }}
+    </td>
+    <td>
+        {{
+            etudiant.matricule
+        }}
+    </td>
+    <td>
+        {{
+            etudiant.adresse
+        }}
+    </td>
+    <td>
+        {{
+            etudiant.sexe
+        }}
+    </td>
+    <td>
+        <a class="btn btn-outline-warning"
+        href="{{ path ('app_etudiant.edit', {id: etudiant.id}) }}" role="button">Modifier</a>
+    </td>
+    <td>
+        <a class="btn btn-outline-danger"
+        href="#" role="button">Supprimer</a>
+    </td>
+    <td>
+        <a class="btn btn-outline-primary"
+        href="#" role="button">Détails</a>
+    </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(etudiants)}}
+</div>
+{% endblock %}

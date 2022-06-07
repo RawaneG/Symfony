@@ -1,0 +1,9 @@
+<title>{% block title %}Créer un Étudiant{% endblock %}</title>
+
+{% block body %}
+
+{{
+    include('etudiant/form.html.twig', {form:form,button:'Créer'})
+}}
+
+{% endblock %}

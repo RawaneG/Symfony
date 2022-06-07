@@ -1,0 +1,13 @@
+{% include "base.html.twig" %}
+{{form_start(form)}}
+<div class="container-fluid d-flex flex-column align-items-center h-75 justify-content-evenly">
+  <div class="w-50 h6">{{form_row(form.nomComplet)}}</div>
+  <div class="w-50 h6">{{form_row(form.email)}}</div>
+  <div class="w-50 h6">{{form_row(form.password)}}</div>
+  <div class="w-50 h6">{{form_row(form.adresse)}}</div>
+  <div class="w-50 h6">{{form_row(form.matricule)}}</div>
+  <div class="w-50 h6">{{form_row(form.sexe)}}</div>
+{{form_widget(form)}}
+<button class="btn btn-primary w-25">{{  button | default('Enregistrer') }}</button>
+</div>
+{{form_end(form)}}
