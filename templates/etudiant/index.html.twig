@@ -12,6 +12,11 @@
         Ajouter un étudiant
     </a>
 </nav>
+{% for message in app.flashes('success') %}
+ <div class="alert alert-success w-75 text-center mx-auto">
+   {{message}}
+ </div>
+{% endfor %}
 <table class="table table-striped table-hover text-center">
   <thead>
     <tr>

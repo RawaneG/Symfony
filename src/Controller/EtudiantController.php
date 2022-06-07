@@ -49,6 +49,7 @@ class EtudiantController extends AbstractController
         {
             $this->om->persist($etudiant);
             $this->om->flush();
+            $this->addFlash('success', 'Étudiant inscrit avec succès');
             return $this->redirectToRoute('app_etudiant');
         }
         return $this->render('etudiant/add.html.twig',
@@ -59,7 +60,7 @@ class EtudiantController extends AbstractController
     }
                     /****************** CRUD : EDIT **********************/
 
-    #[Route('/etudiant/{id}', name: 'app_etudiant.edit')]
+    #[Route('/etudiant/{id}', name: 'app_etudiant.edit', methods: 'GET|POST')]
     public function edit(Etudiant $etudiant, Request $request)
     {
         $form = $this->createForm(EtudiantType::class,$etudiant);
@@ -67,6 +68,7 @@ class EtudiantController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $this->om->flush();
+            $this->addFlash('success', 'Contenu modifié avec succès');
             return $this->redirectToRoute('app_etudiant');
         }
         return $this->render('etudiant/edit.html.twig',
@@ -74,5 +76,12 @@ class EtudiantController extends AbstractController
             'etudiants' => $etudiant,
             'form' => $form->createView()
         ]);
+    }
+                    /****************** CRUD : DELETE **********************/
+
+    #[Route('/etudiant/{id}', name: 'app_etudiant.delete')]
+    public function delete()
+    {
+
     }
 }
