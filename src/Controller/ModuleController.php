@@ -55,4 +55,22 @@ class ModuleController extends AbstractController
             ]
         );
     }
+    #[Route('/module/{id}', name: 'app_module.edit', methods: 'GET|POST')]
+    public function edit(Module $module, Request $request)
+    {
+        $form = $this->createForm(ModuleType::class, $module);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->om->flush();
+            $this->addFlash('success', 'Module modifié avec succès');
+            return $this->redirectToRoute('app_module');
+        }
+        return $this->render(
+            'module/edit.html.twig',
+            [
+                'modules' => $module,
+                'form' => $form->createView()
+            ]
+        );
+    }
 }

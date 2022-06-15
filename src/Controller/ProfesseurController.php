@@ -60,4 +60,23 @@ class ProfesseurController extends AbstractController
             ]
         );
     }
+    #[Route('/professeur/{id}', name: 'app_professeur.edit', methods: 'GET|POST')]
+    public function edit(Professeur $professeur, Request $request)
+    {
+        $form = $this->createForm(ProfesseurType::class, $professeur);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $professeur->setRp($this->getUser());
+            $this->om->flush();
+            $this->addFlash('success', 'Professeur modifié avec succès');
+            return $this->redirectToRoute('app_professeur');
+        }
+        return $this->render(
+            'professeur/edit.html.twig',
+            [
+                'professeurs' => $professeur,
+                'form' => $form->createView()
+            ]
+        );
+    }
 }

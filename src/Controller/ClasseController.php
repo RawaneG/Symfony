@@ -60,4 +60,27 @@ class ClasseController extends AbstractController
             ]
         );
     }
+    #[Route('/classe/{id}', name: 'app_classe.edit', methods: 'GET|POST')]
+    public function edit(Classe $classe, Request $request)
+    {
+        $form = $this->createForm(ClasseType::class, $classe);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $classe->setRp($this->getUser());
+            $classe->setFiliere($form->get('filiere')->getData());
+            $classe->setNiveau($form->get('niveau')->getData());
+            $libelle = $classe->getNiveau() . '_' . $classe->getFiliere();
+            $classe->setLibelle($libelle);
+            $this->om->flush();
+            $this->addFlash('success', 'Classe modifiée avec succès');
+            return $this->redirectToRoute('app_classe');
+        }
+        return $this->render(
+            'classe/edit.html.twig',
+            [
+                'classes' => $classe,
+                'form' => $form->createView()
+            ]
+        );
+    }
 }

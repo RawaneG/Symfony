@@ -1,0 +1,6 @@
+<title>{% block title %}Modifier une Classe{% endblock %}</title>
+{% block body %}
+{{
+    include('classe/add.html.twig', {form:form,button:'Modifier'})
+}}
+{% endblock %}

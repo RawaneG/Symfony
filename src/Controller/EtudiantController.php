@@ -72,7 +72,7 @@ class EtudiantController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->om->flush();
-            $this->addFlash('success', 'Contenu modifié avec succès');
+            $this->addFlash('success', 'Étudiant modifié avec succès');
             return $this->redirectToRoute('app_etudiant');
         }
         return $this->render(

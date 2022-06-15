@@ -41,7 +41,6 @@ class ProfesseurType extends AbstractType
                     'multiple' => true
                 ]
             )
-            ->add('rp', HiddenType::class)
             ->add('classes');
     }
 

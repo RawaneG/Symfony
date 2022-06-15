@@ -18,6 +18,7 @@
   <thead>
     <tr>
       <th scope="col">Libellé Classe</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +28,14 @@
         {{
             module.libelleModule
         }}
+      </td>
+      <td>
+        <a class="btn btn-outline-warning"
+        href="{{ path ('app_module.edit', {id: module.id}) }}" role="button">Modifier</a>
+        </td>
+      <td>
+          <a class="btn btn-outline-danger"
+          href="#" role="button">Supprimer</a>
       </td>
     </tr>
     {% endfor %}

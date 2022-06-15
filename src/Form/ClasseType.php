@@ -28,7 +28,7 @@ class ClasseType extends AbstractType
                     'multiple' => false
                 ]
             )
-            ->add('rp', HiddenType::class)
+            // ->add('rp', HiddenType::class)
             ->add(
                 'niveau',
                 ChoiceType::class,
