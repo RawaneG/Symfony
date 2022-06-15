@@ -32,7 +32,10 @@ class Classe
         $this->professeurs = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
     }
-
+    public function __toString()
+    {
+        return $this->libelle;
+    }
     public function getId(): ?int
     {
         return $this->id;

@@ -9,19 +9,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\InheritanceType("JOINED")]
-#[ORM\DiscriminatorColumn(name : "type", type : "string")]
-#[ORM\DiscriminatorMap(["rp" => "Rp", "ac" => "Ac","etudiant" => "Etudiant"])]
+#[ORM\DiscriminatorColumn(name: "type", type: "string")]
+#[ORM\DiscriminatorMap(["rp" => "Rp", "ac" => "Ac", "etudiant" => "Etudiant"])]
 class User extends Personne implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    private $email;
+    protected $email;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
-    private $password;
+    protected $password;
 
     public function getId(): ?int
     {

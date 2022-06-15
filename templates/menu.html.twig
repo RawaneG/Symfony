@@ -5,29 +5,42 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
+    {% if is_granted('ROLE_AC') %}
       <li class="nav-item">
         <a class="nav-link" href="{{ path('app_etudiant') }}">Étudiants</a>
       </li>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_inscription') }}">Inscription</a>
+      </li>
+    {% endif %}
+    {% if is_granted('ROLE_RP') %}
       <li class="nav-item">
         <a class="nav-link" href="{{ path('app_professeur') }}">Professeurs</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ path('app_ac') }}">Attaché</a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{{ path('app_ac') }}">RP</a>
-      </li>
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="{{ path('app_classe') }}">Classes</a>
       </li>
       </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ path('app_module') }}">Modules</a>
       </li>
+    {% endif %}
+    {% if not is_granted('ROLE_AC') and not is_granted('ROLE_RP') %}
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{{ path('app_inscription') }}">Inscription</a>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
       </li>
+    {% endif %}
+    {% if is_granted('ROLE_AC') or is_granted('ROLE_RP') %}
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ path('app_logout') }}">Déconnexion</a>
+      </li>
+    {% endif %}
     </ul>
   </div>
 </nav>

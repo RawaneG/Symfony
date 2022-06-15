@@ -3,13 +3,10 @@
 {% block title %}Liste des Étudiants{% endblock %}
 
 {% block body %}
-{{
-    include('navbar.html.twig')
-}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 mt-4 d-flex justify-content-around">
-    <h2>Liste des Étudiants</h2>
-    <a href="{{ path('app_etudiant.add') }}" class="btn btn-outline-success">
-        Ajouter un étudiant
+    <h2>Liste des Inscrits</h2>
+    <a href="{{ path('app_inscription') }}" class="btn btn-outline-success">
+        Inscrire un étudiant
     </a>
 </nav>
 {% for message in app.flashes('success') %}

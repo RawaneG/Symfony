@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\EtudiantRepository;
@@ -13,75 +14,79 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EtudiantController extends AbstractController
 {
-    public function __construct( EntityManagerInterface $om)
+    public function __construct(EntityManagerInterface $om)
     {
         $this->om = $om;
     }
-                    /***************** CRUD : READ **********************/
+    /***************** CRUD : READ **********************/
 
     #[Route('/etudiant', name: 'app_etudiant')]
-    public function index(EtudiantRepository $repo, PaginatorInterface $paginator,
-    Request $request): Response
-    {
+    public function index(
+        EtudiantRepository $repo,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
         $etudiants = $repo->findAll();
         $etudiant_pagination = $paginator->paginate(
             $etudiants,
-            $request->query->getInt('page',1),
+            $request->query->getInt('page', 1),
             5
         );
         $i = 0;
-        return $this->render('etudiant/index.html.twig',
-        [
-            'i' => $i,
-            'controller_name' => 'EtudiantController',
-            'etudiants' => $etudiant_pagination
-        ]);
+        return $this->render(
+            'etudiant/index.html.twig',
+            [
+                'i' => $i,
+                'controller_name' => 'EtudiantController',
+                'etudiants' => $etudiant_pagination
+            ]
+        );
     }
-                    /*************** CRUD : CREATE *********************/
+    /*************** CRUD : CREATE *********************/
 
-    #[Route('/etudiant/add', name: 'app_etudiant.add')]
-    public function create(Request $request)
-    {
-        $etudiant = new Etudiant ();
-        $form = $this->createForm(EtudiantType::class,$etudiant);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $this->om->persist($etudiant);
-            $this->om->flush();
-            $this->addFlash('success', 'Étudiant inscrit avec succès');
-            return $this->redirectToRoute('app_etudiant');
-        }
-        return $this->render('etudiant/add.html.twig',
-        [
-            'etudiants' => $etudiant,
-            'form' => $form->createView()
-        ]);
-    }
-                    /****************** CRUD : EDIT **********************/
+    // #[Route('/etudiant/add', name: 'app_etudiant.add')]
+    // public function create(Request $request)
+    // {
+    //     $etudiant = new Etudiant ();
+    //     $form = $this->createForm(EtudiantType::class,$etudiant);
+    //     $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid())
+    //     {
+    //         $this->om->persist($etudiant);
+    //         $this->om->flush();
+    //         $this->addFlash('success', 'Étudiant inscrit avec succès');
+    //         return $this->redirectToRoute('app_etudiant');
+    //     }
+    //     return $this->render('etudiant/add.html.twig',
+    //     [
+    //         'etudiants' => $etudiant,
+    //         'form' => $form->createView()
+    //     ]);
+    // }
+    /****************** CRUD : EDIT **********************/
 
     #[Route('/etudiant/{id}', name: 'app_etudiant.edit', methods: 'GET|POST')]
     public function edit(Etudiant $etudiant, Request $request)
     {
-        $form = $this->createForm(EtudiantType::class,$etudiant);
+        $form = $this->createForm(EtudiantType::class, $etudiant);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->om->flush();
             $this->addFlash('success', 'Contenu modifié avec succès');
             return $this->redirectToRoute('app_etudiant');
         }
-        return $this->render('etudiant/edit.html.twig',
-        [
-            'etudiants' => $etudiant,
-            'form' => $form->createView()
-        ]);
+        return $this->render(
+            'etudiant/edit.html.twig',
+            [
+                'etudiants' => $etudiant,
+                'form' => $form->createView()
+            ]
+        );
     }
-                    /****************** CRUD : DELETE **********************/
+    /****************** CRUD : DELETE **********************/
 
     #[Route('/etudiant/{id}', name: 'app_etudiant.delete')]
     public function delete()
     {
-
     }
 }

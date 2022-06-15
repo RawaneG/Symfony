@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
 class Professeur extends Personne
 {
+
     #[ORM\Column(type: 'string', length: 50)]
     private $grade;
 

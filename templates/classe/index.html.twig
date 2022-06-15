@@ -3,10 +3,17 @@
 {% block title %}Liste des Classes{% endblock %}
 
 {% block body %}
-
-<h3 class="d-flex justify-content-center">
-    Liste des Classes
-</h3>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 mt-4 d-flex justify-content-around">
+    <h2>Liste des Classes</h2>
+    <a href="{{ path('app_classe.add') }}" class="btn btn-outline-success">
+        Insérer une classe
+    </a>
+</nav>
+{% for message in app.flashes('success') %}
+ <div class="alert alert-success w-75 text-center mx-auto">
+   {{message}}
+ </div>
+{% endfor %}
 <table class="table table-striped table-hover text-center">
   <thead>
     <tr>
@@ -25,4 +32,7 @@
     {% endfor %}
   </tbody>
 </table>
+<div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(classes)}}
+</div>
 {% endblock %}

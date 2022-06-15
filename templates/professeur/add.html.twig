@@ -1,8 +1,7 @@
-<title>{% block title %}Inscription {% endblock %}</title>
 {% include "base.html.twig" %}
 {{form_start(form)}}
 <div class="container-fluid d-flex flex-column align-items-center h-75 mt-5 justify-content-evenly">
   <div class="w-75 text-center">{{form_rest(form)}}</div>
-<button class="btn btn-primary w-25 my-4">{{  button | default('Enregistrer') }}</button>
+<button class="btn btn-primary w-25 my-4">{{  button | default('Ajouter') }}</button>
 </div>
 {{form_end(form)}}

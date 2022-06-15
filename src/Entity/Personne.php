@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PersonneRepository::class)]
 #[ORM\InheritanceType("JOINED")]
-#[ORM\DiscriminatorColumn(name : "type", type : "string")]
-#[ORM\DiscriminatorMap(["personne" => "Personne", "user" => "User","professeur" => "Professeur"])]
+#[ORM\DiscriminatorColumn(name: "type", type: "string")]
+#[ORM\DiscriminatorMap(["personne" => "Personne", "user" => "User", "professeur" => "Professeur"])]
 class Personne
 {
     #[ORM\Id]
@@ -35,5 +35,4 @@ class Personne
 
         return $this;
     }
-
 }

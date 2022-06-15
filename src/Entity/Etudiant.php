@@ -31,6 +31,7 @@ class Etudiant extends User
         $this->demandes = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
         $this->setRoles(['ROLE_ETUDIANT']);
+        $this->setMatricule("P4_DEV_" . rand(1000, 10000));
     }
 
     public function getId(): ?int
